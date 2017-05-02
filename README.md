@@ -29,4 +29,4 @@ ng serve
 
 It will be run the dev server with auto refresh
 
->(behind the scene)[https://github.com/ember-cli/ember-cli/blob/master/lib/commands/serve.js]
+>[behind the scene](https://github.com/ember-cli/ember-cli/blob/master/lib/commands/serve.js)
