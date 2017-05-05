@@ -54,6 +54,7 @@ It has an internal counter property that is used to display the current counter 
 ```
 
 so Lets change some property value using two way binding. 
+
 scenario 1: we have heading, select box different color. and we have to change heading color property value by selection of color in select box.
 
  ```
