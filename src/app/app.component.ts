@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +7,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  counterValue = 0;
 
-  cricketers: Array<any> = [
-    {
-      name:"Sanath",
-      type:"batsman"
-    },
-    {
-      name:"Sachin",
-      type:"batsman"
-    },
-    {
-      name:"Vaas",
-      type:"bolwer"
+  @Input()
+  get counter() {
+    console.log("get value")
+    return this.counterValue;
+  }
+  @Output() counterChange :  EventEmitter<number>;
+
+    constructor(){
+
+        this.counterChange = new EventEmitter();
+
     }
-  ]
 
+      increment(){
+
+            this.counterValue = this.counterValue+1; 
+       this.counterChange.emit(this.counterValue);
+        }
 }
