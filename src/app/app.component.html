@@ -1,4 +1,10 @@
 
 <h1>
-   <button (click)='increment()'>Increment</button>
+   <h2 [class]="colorClass">Example for property Binding with Class</h2>
+   <select [(ngModel)]="colorClass">
+       <option value="pink">Pink</option>
+       <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+   </select>
 </h1>

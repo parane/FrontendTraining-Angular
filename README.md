@@ -41,9 +41,10 @@ simple counter.
 
 It has an internal counter property that is used to display the current counter value. you can use this within component html. 
 
-so lets try with two way binding. To create your own component that supports two-way binding, you must define an @Output property to match an @Input, but suffix it with the Change. it ll continue after creating multiple components 
+ To create your own component that supports two-way binding, you must define an @Output property to match an @Input, but suffix it with the Change. This is needed when you are sending to different component. Lets go deep into next section
 
 ```
+  //this is the sample (not in code base)
   @Output() counterChange = new EventEmitter();
  set counter(val) {
     this.counterValue = val;
@@ -51,3 +52,20 @@ so lets try with two way binding. To create your own component that supports two
   }
 
 ```
+
+so Lets change some property value using two way binding. 
+scenario 1: we have heading, select box different color. and we have to change heading color property value by selection of color in select box.
+
+ ```
+<h1 class="c" > Change color </h1>
+ <select [(ngModel)]="c">
+       <option value="pink">Pink</option>
+       <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+   </select>
+```
+
+>note class value are in css
+ 
+ 
