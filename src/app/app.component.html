@@ -1,12 +1,5 @@
 
 <h1>
-<ng-container *ngFor="let cricketer of cricketers" >
- <li *ngIf="cricketer.type == 'batsman'" >{{cricketer.name}}</li>
-</ng-container>
-
-</h1>
-<h1>
-<template  ngFor let-cricketer [ngForOf]="cricketers">
-   <li *ngIf="cricketer.type == 'batsman'" >{{cricketer.name}}</li>
-</template>
+<input [(ngModel)] = "username">
+<p>Hello {{username}} !</p>
 </h1>
