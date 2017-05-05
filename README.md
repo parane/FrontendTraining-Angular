@@ -33,3 +33,35 @@ trackBy feature from Angular 1.x that allows performance improvements when popul
   return cricketer.name;
 }
 ```
+
+## Working with ngif
+
+ngIf fileter out the list, only batsman.
+```
+// current - invalid
+<li *ngFor="let cricketer of cricketers" *ngIf="cricketer.type == 'batsman'"> {{cricketer.name}}</li>
+
+```
+### Is it working ?
+>throw error "Can't have multiple template bindings on one element. Use only one attribute named 'template' or prefixed with *" ....(ref)[https://github.com/angular/angular/issues/4792] 
+
+### reason ?
+*ngIf, *ngFor manuplate the dom element. so they have stopped that in angular 2 ( may be performance issue). 
+
+### how can we make this work ?
+
+1. ng-container
+This is a logical container that can be used to group nodes but is not rendered in the DOM tree as a node.
+```
+<ng-container *ngFor="let cricketer of cricketers" >
+ <li *ngIf="cricketer.type == 'batsman'" >{{cricketer.name}}</li>
+</ng-container>
+```
+
+2. template
+new Angular template syntax with the template tag. This is also called a structural Directive. It is helpful to know that * is just a shorthand to explicitly defining the data bindings on a template tag. The template tag prevents the browser from reading or executing the code within it.
+
+<template="ngFor let cricketer of cricketers">
+   <li *ngIf="cricketer.type == 'batsman'" >{{cricketer.name}}</li>
+</template>
+

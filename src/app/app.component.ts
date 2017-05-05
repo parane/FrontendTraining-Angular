@@ -23,8 +23,4 @@ export class AppComponent {
     }
   ]
 
- trackByFn(index, cricketer) {
-  console.log(cricketer);
-  return cricketer.name;
-}
 }

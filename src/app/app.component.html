@@ -1,3 +1,12 @@
+
 <h1>
-<li *ngFor="let cricketer of cricketers; let i = index;  trackBy: trackByFn"> {{i}}{{cricketer.name}}</li>
+<ng-container *ngFor="let cricketer of cricketers" >
+ <li *ngIf="cricketer.type == 'batsman'" >{{cricketer.name}}</li>
+</ng-container>
+
+</h1>
+<h1>
+<template  ngFor let-cricketer [ngForOf]="cricketers">
+   <li *ngIf="cricketer.type == 'batsman'" >{{cricketer.name}}</li>
+</template>
 </h1>
