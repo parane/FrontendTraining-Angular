@@ -1,8 +1,8 @@
-# Angular Concept
+# Angular Concept - ngFor and ngIf
 ## prerequisite
 >Intial setup in master branch
 
-## Working with arrays and ngfor
+## Working with ngfor
 
 Adding collection of object. using ngFor, loop through and display it. 
 
