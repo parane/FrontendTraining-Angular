@@ -1,3 +1,3 @@
 <h1>
-  {{title}}
+<li *ngFor="let cricketer of cricketers; let i = index;  trackBy: trackByFn"> {{i}}{{cricketer.name}}</li>
 </h1>

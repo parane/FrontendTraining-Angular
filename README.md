@@ -1,72 +1,35 @@
-# Angular Setup
+# Angular Concept
 ## prerequisite
->Install node Optional Visual studio code Editor
+>Intial setup in master branch
 
-## Introduction to Angular
->Angular is a development platform for building mobile and desktop web applications using Typescript/JavaScript (JS). AngularJS is privious version of Angular. 
+## Working with arrays and ngfor
 
-## Step 1 : Install Angular CLI
-One of the easiest ways to start a new Angular 2 application is to use Angular’s command-line interface (CLI).
+Adding collection of object. using ngFor, loop through and display it. 
 
+define Any Object array in app.component.ts.
 ```
- npm install -g @angular/cli
+cricketers:  Array<any> = [{},{}]
 ```
-
->which will install the ng command globally on your system.To verify whether your installation completed successfully ```ng version```
-
-## Step 2 : Creating a New Angular Application
+loop through in html using *ngFor
 ```
-ng init
-```
-It will be created directory structure,testing and typscript configuration are done in behind the scene.
-
->using ng (based on emberjs), you can do Development server (`ng serve`),Code scaffolding (`ng generate component component-name`),Build (`ng build`), Running unit tests(`ng test`) end-to-end tests(`ng e2e`)
-
-e2e- End to end testing
-node_modules - all npm dependencies
-app- commponts. mostly we are working on here.
-environments- Works with environment configurations
-angular-cli.json -Allows you to change the default settings of the CLI.
-karma.conf.js/protractor.conf.js - for testing
-
-## Step 3 : Running Your Application
-```
-ng serve
+<li *ngFor="let cricketer of cricketers"> {{cricketer.name}}</li>
 ```
 
-It will be run the dev server with auto refresh
+*ngFor syntax says we want to use the NgFor directive on this attribute. it marks that <li> element (and its children) as the "repeater template".
 
->[behind the scene](https://github.com/ember-cli/ember-cli/blob/master/lib/commands/serve.js)
-
-## Step 4 : Introduction to Component
 ```
-import { Component } from '@angular/core';
+<li *ngFor="let cricketer of cricketers; let i = index"> {{i}}{{cricketer.name}}</li>
+```
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent {
-  title = 'app works!';
+trackBy feature from Angular 1.x that allows performance improvements when populating list of object.Angular has no information about the cricketer object. if we create new object with exactly same name and type object, angular treat that new object. so avoid that situation. you can use trackBy.
+
+
+```
+<li *ngFor="let cricketer of cricketers; let i = index;  trackBy: trackByFn"> {{i}}{{cricketer.name}}</li>
+
+//component
+ trackByFn(index, cricketer) {
+  console.log(cricketer);
+  return cricketer.name;
 }
-
-```
-Notice that the structure of this import is of the format import { things } from wherever . In the{ things } part what we are doing is called destructuring. Destructuring is a feature provided ES6. 
-
-That is the idea behind components: we teach the browser new tags that have new functionality. eg <app-root> is browser. Those component is defined in src -> app -> app.component.ts. This is the typedscript. This has two basic concept ?
-
-1. Component annotation
-2. Component definition class
-
-Annotation is just meta data added to your code like in java annotation. The selector property here indicates which DOM element this component is going to use. This way if we have any app-root></app-root>tag within a template, it will be compiled using this Component class. Component is contain html and css as well as define in templateUrl and styleUrls.
-
-### Step 4.1 : Adding Data to the Component (Binding)
-```
- title = 'app works!';
-```
-
-Template Variable in html to catch those data.
-```
-{{ name }}
 ```
