@@ -68,5 +68,36 @@ scenario 1: we have heading, select box different color. and we have to change h
 ```
 
 >note class value are in css
- 
- 
+
+
+
+ ### stylish page using bootstrap
+
+Adding bootstrap dependency into the project 
+
+```
+ npm install bootstrap --save-dev
+```
+
+Setup environment for bootstrap in .angular-cli.json
+
+```
+ "styles": [
+         "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "styles.css"
+      ],
+```
+> note you need to jquery , bootstrap js for functionalities
+
+Adding some bootstrap templates (bootspwatch)[https://bootswatch.com/]
+
+```
+  <select class="form-control" [(ngModel)]="colorClass">
+       <option value="pink">Pink</option>
+       <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+   </select>
+```
+
+
