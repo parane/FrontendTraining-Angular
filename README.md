@@ -3,13 +3,13 @@
 >Intial setup in master branch
 
 ## Intro To Component
-Components are the most basic building block of an UI in an Angular application. An Angular application is a tree of Angular components. Angular components are a subset of directives. components always have a template (html).The component contains two important things; one is view and another one is some logic.
+
 
 
 ## creating component using Angular-cli
 
 ```
-ng g component tab1
+
 ```
 
 ## creating component manually
