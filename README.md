@@ -14,10 +14,73 @@ There are three kinds of directives in Angular:
    3.1 Custom Attribute directives --- Lets create own custom directive
 
 
-## creating  Custom Attribute directives
+## creating  Custom Attribute directives 
+
+1. you can create directive by angular cli. 
+```
+ng g directive sample
+```
+
+2. create HighlightDirective in directive folder by manually
+```
+@Directive({
+     selector: '[myHighlight]' 
+    })
+
+export class HighlightDirective  {
+   
+}
 
 ```
 
+2.1 Exporting HighlightDirective makes it accessible to other components in app.module.ts
+
+```
+  declarations: [
+    AppComponent,
+    Tab1Component,
+    Tab2Component,
+    SampleDirective,
+    HighlightDirective
+  ],
 ```
 
+## highlight element by custom directive.
 
+we ll access dom element and change background color. 
+
+```
+constructor(el: ElementRef) {
+       el.nativeElement.style.backgroundColor = 'yellow';
+    }
+```
+injects into the directive's constructor so the code can access the DOM element.ElementRef is a service that grants direct access to the DOM element through its nativeElement property.
+
+>note : Permitting direct access to the DOM can make your application more vulnerable to XSS attacks. Carefully review any use of ElementRef in your code. 
+
+so, Alternatively you take a look at Renderer which provides API that can safely be used even when direct access to native elements is not supported.
+
+```
+   constructor(el: ElementRef,renderer: Renderer) {
+      // el.nativeElement.style.backgroundColor = 'yellow';
+      renderer.setElementStyle(el.nativeElement, 'background-color', 'yellow');
+    }
+```
+
+## Respond to user-initiated events.
+
+lets change the color when mouse over.
+```
+  @HostListener('mouseenter') onMouseEnter() {
+    this.highlight('yellow');
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.highlight(null);
+  }
+
+  private highlight(color: string) {
+      this.renderer.setElementStyle(this.el.nativeElement, 'background-color', color);
+  }
+
+```
