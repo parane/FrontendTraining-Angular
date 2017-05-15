@@ -1,5 +1,6 @@
-<app-tab1></app-tab1>
-<app-tab2></app-tab2>
-<h1>
-hello
-</h1>
+<button class="btn btn-info" [ngClass]="{'btn-info': activeTab === 'Tab1'}" (click)="changeTab('Tab1')"> Tab1 </button>
+<button class="btn " [ngClass]="{'btn-info': activeTab === 'Tab2'}"  (click)="changeTab('Tab2')"> Tab2  </button>
+<app-tab1 [hidden]= "activeTab !==  'Tab1'" [receivedByChild] = "sendDataFromParent" (btnClickEmit)="handleEmit($event)"  ></app-tab1>
+<app-tab2 [hidden]= "activeTab !==  'Tab2'"></app-tab2>
+{{anyMessageFromChild}}
+
