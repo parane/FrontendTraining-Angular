@@ -3,5 +3,5 @@
 <app-tab1 [hidden]= "activeTab !==  'Tab1'" [receivedByChild] = "sendDataFromParent" (btnClickEmit)="handleEmit($event)"  ></app-tab1>
 <app-tab2 [hidden]= "activeTab !==  'Tab2'"></app-tab2>
 {{anyMessageFromChild}}
-
+<a routerLink="/home">go to home</a>
 <router-outlet></router-outlet>

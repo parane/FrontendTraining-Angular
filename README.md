@@ -41,11 +41,16 @@ export const Routing = RouterModule.forRoot(APP_ROUTES);
   ],
 ```
 
-## Adding <router-outlet></router-outlet> to main html
+## Adding router-outlet to main html
 within router-outlet, home app componet will be replace by routing 
 
 ```
-<router-outlet></router-outlet>
+<></router-outlet>
 ```
 
 if u go to localhost:4200/home ,  'home work' html placed within router-outlet
+
+instead of manually going to the localhost:4200/home, crate home router link as following:
+```
+<a routerLink="/home">go to home</a>
+```
