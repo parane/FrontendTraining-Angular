@@ -8,6 +8,7 @@ import { Tab1Component } from './tab1/tab1.component';
 import { Tab2Component } from "app/tab2/tab2.component";
 import { HomeComponent } from './routing_page/home/home.component';
 import { Routing } from "app/app.routing";
+import { LoginGuard } from "app/shared/guards/login.guard";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { Routing } from "app/app.routing";
     HttpModule,
     Routing
   ],
-  providers: [],
+  providers: [
+    LoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
