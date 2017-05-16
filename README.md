@@ -45,7 +45,7 @@ export const Routing = RouterModule.forRoot(APP_ROUTES);
 within router-outlet, home app componet will be replace by routing 
 
 ```
-<></router-outlet>
+<router-outlet></router-outlet>
 ```
 
 if u go to localhost:4200/home ,  'home work' html placed within router-outlet
