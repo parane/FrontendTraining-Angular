@@ -1,104 +1,44 @@
-# Angular Concept 5 - Routing
+# Angular Concept 4 - Forms
 ## prerequisite
 >Intial setup in master branch
 
-## Intro To Routing
-The Angular Router enables navigation from one view to the next as users perform application tasks.
+## Intro To Forms
+Forms are the mainstay of business applications. 
+
+Basic Building blocks of Forms
+
+![alt text](http://i.imgur.com/v53aSkJ.png)
 
 
-## creating component in routing_page directive
 
-```
- ng g c routing_page/home
-```
+It came up with two way to implement the form : 
 
-## creating file app.routing.ts in app 
-All routing are handle by here
+##1. Template-driven Way/Angular 1 way
+Angular 1 tackles forms via the famous ng-model directive
 
-```
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from "app/routing_page/home/home.component";
+The instantaneous two-way data binding of ng-model in Angular 1 is really a life-saver as it allows to transparently keep in sync a form with a view model.
 
-const APP_ROUTES: Routes = [
+Forms built with this directive can only be tested in an end to end test because this requires the presence of a DOM, but still this mechanism is very useful and simple.
+
+Angular now provides an identical mechanism named also ngModel, that allow us to build what is now called Template-Driven forms. 
+
+### Advantages and disadvantages of Template driven
+There is nothing wrong with template driven forms, but from a programming technique point of view bi-directional binding is a solution that promotes mutability.
+
+Each form has a state that can be updated by many different interactions and its up to the application developer to manage that state and prevent it from getting corrupted. This can get hard to do for very large forms and can introduce a category of potential bugs.
+
+Again its important to realize that this only happens in very large / complex forms. Angular does provides a different alternative for managing forms, so let's go through it.
+
+
+
+## 2. Reactive (or model-driven) way
+
+
+
+## creating login component in forms
+
+it contian simple html form elements without any form control.
  
-    {
-        path: 'home',
-        component: HomeComponent
-    }
-];
-
-
-export const Routing = RouterModule.forRoot(APP_ROUTES);
 ```
-
-## import Routing to app.module.ts
+ ng g c forms/login
 ```
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpModule,
-    Routing
-  ],
-```
-
-## Adding router-outlet to main html
-within router-outlet, home app componet will be replace by routing 
-
-```
-<router-outlet></router-outlet>
-```
-
-if u go to localhost:4200/home ,  'home work' html placed within router-outlet
-
-instead of manually going to the localhost:4200/home, crate home router link as following:
-```
-<a routerLink="/home">go to home</a>
-```
-
-## Adding Guard to routing
-
-So priviously we can access routes without any restriction. Protecting routes is a very common task when building applications, as we want to prevent our users from accessing areas that they’re not allowed to access, or, we might want to ask them for confirmation when leaving a certain area (unsaved form details). Angular’s router provides a feature called Navigation Guards that try to solve exactly that problem.
-
-
-1. CanActivate - Decides if a route can be activated
-example activate guard that checks whether the user is logged in when home link click:
-
-login.guards.ts :
-```
-@Injectable()
-export class LoginGuard implements CanActivate {
-
-    constructor(private router: Router) {
-
-    }
-
-     canActivate() {
-        if (confirm('are you login?')) {
-            // this.router.navigate(['/', 'login']);
-            return true;
-
-        }
-        return false;
-    }
-
-}
-```
-
-lets guard homerouting :
-```
- canActivate: [LoginGuard],
-```
-
-define it in provider 
-```
- providers: [
-    LoginGuard
-  ]
-```
-
-2. CanDeactivate - Decides if a route can be deactivated
-CanDeactivate works in a similar way to CanActivate but there are some important differences. The canDeactivate function passes the component being deactivated as an argument to the function:
-example activate guard that checks whether the user is unsaved changes:
-
-
-

@@ -9,6 +9,7 @@ import { Tab2Component } from "app/tab2/tab2.component";
 import { HomeComponent } from './routing_page/home/home.component';
 import { Routing } from "app/app.routing";
 import { LoginGuard } from "app/shared/guards/login.guard";
+import { LoginComponent } from './forms/login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LoginGuard } from "app/shared/guards/login.guard";
     Tab1Component,
     Tab2Component,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
