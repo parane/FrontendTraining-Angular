@@ -14,15 +14,23 @@ export class RegisterModelComponent implements OnInit {
   constructor(public formBuilder: FormBuilder) {
 
       this.myForm = formBuilder.group({
-      'username': '',
-      'email': '',
-      'password': '',
+        userData: formBuilder.group({
+          'username': ['Max', [Validators.required, this.exampleValidator]],
+          'email': ''
+      }),
+      'password': ['', Validators.required],
       'newsletter':''
-      });
-
+    });
+    
    }
 
   ngOnInit() {
   }
-
+  
+ exampleValidator(control: FormControl): { [s: string]: boolean } {
+    if (control.value === 'Example') {
+      return { example: true };
+    }
+    return null;
+  }
 }

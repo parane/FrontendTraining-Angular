@@ -2,15 +2,15 @@
 
 
   <h1>Template Driven Registration Form</h1>
-  <form>
+  <form  #f="ngForm">
     <div>
-      <div class="form-group">
+      <div>
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" >
+        <input [ngModel]="name" type="text" class="form-control" name="username" >
       </div>
-      <div class="form-group">
+      <div>
         <label for="email">E-Mail</label>
-        <input type="text" class="form-control" id="email">
+        <input ngModel type="text" class="form-control" name="email">
         <div >
           <span > not a valid email</span>
           <span > Email Required</span>
@@ -18,15 +18,16 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div>
       <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" >
+      <input ngModel type="password" class="form-control" name="password" >
     </div>
    <div class="radio" >
       <label>Would you like to receive a newsletter? </label>
-      <label><input type="radio" value="yes" name="newsletter">yes</label>
-      <label><input type="radio" value="no" name="newsletter">no</label>
+      <label><input ngModel type="radio" value="yes" name="newsletter">yes</label>
+      <label><input ngModel type="radio" value="no" name="newsletter">no</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <p> form: {{f.value | json}}}</p>
 </div>

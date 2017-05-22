@@ -3,7 +3,7 @@
 
   <h1>Model Driven Registration Form</h1>
   <form [formGroup]="myForm">
-    <div>
+    <div formGroupName="userData">
       <div class="form-group">
         <label for="username" >Username</label>
         <input type="text" class="form-control" id="username" formControlName="username">
@@ -31,4 +31,5 @@
   </form>
 
   <p>form: {{myForm.value | json }}</p>
+  <p>form: {{myForm.status }}</p>
 </div>

@@ -1,4 +1,4 @@
-# Angular Concept 4 - Forms
+# Angular Concept 6 - Forms
 ## prerequisite
 >Intial setup in master branch
 
@@ -11,11 +11,15 @@ It contains Form control, form group and form array.
 ![alt text](http://i.imgur.com/v53aSkJ.png)
 
 ### form control :
+A FormControl represents a single input field - it is the smallest unit of an Angular form.
+FormControls encapsulate the field's value, and states such as if it is valid dirty (changed), or has errors.
+
 ![alt text](http://i.imgur.com/ZQSJvh2.png)
 ![alt text](http://i.imgur.com/sSXF90I.png)
 
 ### form group :
-This is the form controll collection. eg address form group has collection of door no, street and city form control.
+Most forms have more than one field, so we need a way to manage multiple FormControls. If we wanted to check the validity of our form, it's cumbersome to iterate over an array of FormControls and check each FormControl for validity.
+eg address form group has collection of door no, street and city form control.
 
 ### form array :
 ![alt text](http://i.imgur.com/MsCGgrK.png)
@@ -150,3 +154,59 @@ and access the form
 ```
 http://localhost:4200/model
 ```
+
+u can add group 
+```
+userData: formBuilder.group({
+          'username': '',
+          'email': ''
+      })
+```
+adding validator
+```
+'password': ['', Validators.required],
+```
+
+adding some custom validator 
+```
+ 'username': ['Max', [Validators.required, this.exampleValidator]]
+
+ exampleValidator(control: FormControl): { [s: string]: boolean } {
+    if (control.value === 'Example') {
+      return { example: true };
+    }
+    return null;
+  }
+  
+ ```
+
+
+ 
+
+##  lets start with template forms.
+So let’s get started. What do we bind with? You guessed it, our beloved friends ngForm and ngModel. Let’s start with ngForm.
+
+In this <form> we are exporting the ngForm value to a public #f variable, to which we can render out the value of the form.
+
+
+adding ngModel each input form
+```
+ <form  #f="ngForm">
+ .
+ .
+ .
+ <input ngModel type="text" class="form-control" name="username" >
+ ```
+ 
+ ngForm - Creates a top-level FormGroup instance and binds it to a form to track aggregate form value and validation status.
+
+ ngModel - if no binding([()]) or value is assigned, ngModel will look for a name attribute and assign that value as a new Object key to the global ngForm Object:
+ However, this will actually throw an error as we need a name="" attribute for all our form fields
+ ngModel “talks to” the form, and binds the form value based on the name attribute’s value. In this case name="name". Therefore it is needed.
+
+
+ > note There are different between ngModel,[ngModel], [(ngModel)]. [ngModel] = one-way binding syntax, can set initial data from the bound component class, but will bind based on the name="foo" attribute. [(ngModel)] = two-way binding syntax, can set initial data from the bound component class
+
+adding validator
+
+<required>
