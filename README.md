@@ -6,14 +6,26 @@
 Forms are the mainstay of business applications. 
 
 Basic Building blocks of Forms
+It contains Form control, form group and form array.
 
 ![alt text](http://i.imgur.com/v53aSkJ.png)
 
+### form control :
+![alt text](http://i.imgur.com/ZQSJvh2.png)
+![alt text](http://i.imgur.com/sSXF90I.png)
 
+### form group :
+This is the form controll collection. eg address form group has collection of door no, street and city form control.
+
+### form array :
+![alt text](http://i.imgur.com/MsCGgrK.png)
 
 It came up with two way to implement the form : 
 
-##1. Template-driven Way/Angular 1 way
+![alt text](http://i.imgur.com/BtvP7dh.png)
+
+
+## 1. Template-driven Way/Angular 1 way
 Angular 1 tackles forms via the famous ng-model directive
 
 The instantaneous two-way data binding of ng-model in Angular 1 is really a life-saver as it allows to transparently keep in sync a form with a view model.
